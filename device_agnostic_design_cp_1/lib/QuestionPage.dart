@@ -33,12 +33,16 @@ class _QuestionPageState extends State<QuestionPage> {
   }
 
   getQuestion() async {
-    final url = Uri.parse('https://dad-quiz-api.deno.dev/topics/$id/questions');
+    final url = Uri.parse(
+        'https://dad-quiz-api.deno.dev/topics/${widget.id}/questions');
     final response = await http.get(url);
-    final List<dynamic> result = jsonDecode(response.body);
+    print(response.body);
+    final Map<String, dynamic> result = jsonDecode(response.body);
     print(result);
     setState(() {
       //topics = result.map((e) => e as Map<String, dynamic>).toList();
+      //{id: 7, question: In what continent is Argentina located?, options: [America, Europe, Oceania,
+      //Africa], answer_post_path: /topics/3/questions/7/answers}
     });
   }
 
